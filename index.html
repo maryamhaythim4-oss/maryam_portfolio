@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maryam Saif | Web Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       1. THEME VARIABLES (DARK & LIGHT MODE)
+       ========================================================= */
+    :root {
+      --bg-primary: #090d16;
+      --bg-secondary: #101726;
+      --bg-card: rgba(19, 27, 46, 0.78);
+      --bg-card-hover: rgba(26, 37, 62, 0.92);
+      --border-color: rgba(148, 163, 184, 0.16);
+      --border-hover: rgba(99, 102, 241, 0.55);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+      --badge-bg: rgba(99, 102, 241, 0.14);
+      --badge-text: #a5b4fc;
+      --shadow-lg: 0 20px 45px -15px rgba(2, 6, 23, 0.75);
+      --nav-bg: rgba(9, 13, 22, 0.82);
+      --code-bg: #060911;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #eef2ff;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-hover: #ffffff;
+      --border-color: rgba(15, 23, 42, 0.11);
+      --border-hover: rgba(79, 70, 229, 0.5);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-primary: #4f46e5;
+      --accent-secondary: #0891b2;
+      --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+      --badge-bg: rgba(79, 70, 229, 0.1);
+      --badge-text: #4338ca;
+      --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.12);
+      --nav-bg: rgba(248, 250, 252, 0.86);
+      --code-bg: #0f172a;
+    }
+
+    /* =========================================================
+       2. RESET & BASE STYLES
+       ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 12% 14%, rgba(99, 102, 241, 0.14), transparent 38%),
+        radial-gradient(circle at 88% 24%, rgba(6, 182, 212, 0.12), transparent 36%);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* =========================================================
+       3. NAVIGATION BAR
+       ========================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.25rem;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 0.6rem;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.45rem;
+      height: 2.45rem;
+      border-radius: 0.65rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* =========================================================
+       4. HERO SECTION
+       ========================================================= */
+    .hero {
+      padding: 4.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid rgba(99, 102, 241, 0.26);
+      margin-bottom: 1.25rem;
+    }
+
+    .status-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.45rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      max-width: 56ch;
+      margin-bottom: 1.85rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.4rem;
+      border-radius: 0.75rem;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 25px -8px rgba(99, 102, 241, 0.65);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.35rem;
+      border-radius: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .hero-socials {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .social-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.65rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .social-chip:hover {
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Code Window Card */
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      color: #e2e8f0;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .window-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.42rem;
+    }
+
+    .window-dots span {
+      width: 0.68rem;
+      height: 0.68rem;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .file-tab {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .copy-mini-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 0.4rem;
+      background: rgba(99, 102, 241, 0.18);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      transition: background 0.2s ease;
+    }
+
+    .copy-mini-btn:hover {
+      background: rgba(99, 102, 241, 0.32);
+    }
+
+    .code-body {
+      padding: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .tok-kw { color: #c084fc; }
+    .tok-cls { color: #38bdf8; }
+    .tok-str { color: #34d399; }
+    .tok-prop { color: #93c5fd; }
+    .tok-com { color: #64748b; }
+
+    /* =========================================================
+       5. SECTION HEADINGS & SHARED CARDS
+       ========================================================= */
+    section {
+      padding: 4.25rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.65rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.55rem;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      max-width: 60ch;
+      font-size: 0.98rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    /* =========================================================
+       6. ABOUT SECTION
+       ========================================================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pillar-icon {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--badge-bg);
+      color: var(--accent-primary);
+      margin-bottom: 1rem;
+    }
+
+    .pillar-title {
+      font-size: 1.06rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .pillar-text {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* =========================================================
+       7. SKILLS SECTION (4 CORE LANGUAGES)
+       ========================================================= */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .filter-btn {
+      padding: 0.45rem 0.95rem;
+      border-radius: 0.6rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #ffffff;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .skill-card.hidden {
+      display: none;
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .skill-identity {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .lang-badge {
+      width: 2.85rem;
+      height: 2.85rem;
+      border-radius: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #ffffff;
+    }
+
+    .lang-html { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .lang-css { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .lang-js { background: linear-gradient(135deg, #eab308, #ca8a04); color: #0f172a; }
+    .lang-py { background: linear-gradient(135deg, #10b981, #059669); }
+
+    .skill-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .skill-role {
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.45rem;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+    }
+
+    /* =========================================================
+       8. PROJECTS SHOWCASE (READY TO CUSTOMIZE)
+       ========================================================= */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.15rem;
+    }
+
+    .project-banner {
+      height: 7.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #ffffff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .banner-1 { background: linear-gradient(135deg, #4f46e5, #06b6d4); }
+    .banner-2 { background: linear-gradient(135deg, #0ea5e9, #10b981); }
+    .banner-3 { background: linear-gradient(135deg, #7c3aed, #ec4899); }
+
+    .project-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .details-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .details-link:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================================================
+       9. CONTACT & SOCIAL CONNECT SECTION
+       ========================================================= */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .social-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .social-card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-info {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .social-icon-box {
+      width: 2.85rem;
+      height: 2.85rem;
+      border-radius: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .fb-bg { background: #1877f2; }
+    .ig-bg { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
+
+    .social-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .small-btn {
+      padding: 0.45rem 0.82rem;
+      border-radius: 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: border-color 0.2s ease;
+    }
+
+    .small-btn:hover {
+      border-color: var(--border-hover);
+    }
+
+    .small-btn.primary {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: #ffffff;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .field-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      padding: 0.72rem 0.9rem;
+      border-radius: 0.65rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* =========================================================
+       10. FOOTER, MODAL & TOAST
+       ========================================================= */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      margin-top: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 480px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #0f172a;
+      color: #f8fafc;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      padding: 0.78rem 1.15rem;
+      border-radius: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 120;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       11. RESPONSIVE BREAKPOINTS
+       ========================================================= */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 4.25rem;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 1.25rem;
+        gap: 0.9rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Maryam Saif Home">
+        <span class="brand-mark">MS</span>
+        <span>Maryam Saif</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Languages</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle Dark or Light Mode" title="Toggle Theme">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+        <button class="icon-btn mobile-toggle" id="mobileMenuBtn" type="button" aria-label="Open Navigation Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Open to Web Development Projects</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Maryam Saif</span>
+          </h1>
+          <p class="hero-subtitle">Web Developer &bull; Frontend &amp; Python Scripting</p>
+          <p class="hero-desc">
+            I design and build clean, responsive, and user-friendly websites. Working across
+            <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>Python</strong>,
+            I turn ideas into structured, reliable web experiences.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#contact" class="btn-primary">
+              <span>Let's Connect</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#skills" class="btn-secondary">Explore My Stack</a>
+          </div>
+
+          <div class="hero-socials">
+            <a href="https://www.facebook.com/share/19wPdrzb78/" target="_blank" rel="noopener noreferrer" class="social-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+
+            <a href="https://www.instagram.com/maryamhaythim/?__pwa=1#" target="_blank" rel="noopener noreferrer" class="social-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Developer Profile Code Card -->
+        <div class="code-window" aria-label="Developer Profile Summary Code">
+          <div class="code-header">
+            <div class="window-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="file-tab">developer_profile.py</span>
+            <button type="button" class="copy-mini-btn" id="copyCodeBtn">Copy</button>
+          </div>
+          <pre class="code-body" id="profileSnippet"><span class="tok-com"># Maryam Saif - Web Developer Profile</span>
+<span class="tok-kw">class</span> <span class="tok-cls">WebDeveloper</span>:
+    <span class="tok-prop">name</span> = <span class="tok-str">"Maryam Saif"</span>
+    <span class="tok-prop">role</span> = <span class="tok-str">"Web Developer"</span>
+    <span class="tok-prop">languages</span> = [
+        <span class="tok-str">"HTML"</span>,
+        <span class="tok-str">"CSS"</span>,
+        <span class="tok-str">"JavaScript"</span>,
+        <span class="tok-str">"Python"</span>
+    ]
+
+    <span class="tok-kw">def</span> <span class="tok-cls">build</span>(self):
+        <span class="tok-kw">return</span> <span class="tok-str">"Clean, responsive &amp; modern web apps"</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">01 / About Me</p>
+          <h2 class="section-title">Building Thoughtful Web Experiences</h2>
+          <p class="section-desc">
+            I combine clean front-end structure and styling with interactive client-side behavior and Python fundamentals to deliver dependable websites.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <div class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                <path d="M8 20h8M12 18v2"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Responsive Interfaces</h3>
+            <p class="pillar-text">
+              Crafting adaptable layouts with semantic HTML and modern CSS so every page looks crisp across phones, tablets, and desktops.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Interactive Frontends</h3>
+            <p class="pillar-text">
+              Adding smooth DOM interactions, dynamic UI states, and intuitive user flows powered by clean JavaScript.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="pillar-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Structured Logic with Python</h3>
+            <p class="pillar-text">
+              Leveraging Python for problem-solving, backend fundamentals, data handling, and clean programmatic workflows.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS / LANGUAGES ==================== -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">02 / Core Languages</p>
+          <h2 class="section-title">My Technical Toolkit</h2>
+          <p class="section-desc">
+            The four core languages I use to structure, style, animate, and power web development projects.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filter languages by category">
+          <button type="button" class="filter-btn active" data-filter="all">All Languages (4)</button>
+          <button type="button" class="filter-btn" data-filter="frontend">Frontend (HTML, CSS, JS)</button>
+          <button type="button" class="filter-btn" data-filter="backend">Backend &amp; Scripting (Python)</button>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+          <!-- HTML -->
+          <article class="card skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-identity">
+                <span class="lang-badge lang-html">HTML</span>
+                <div>
+                  <h3 class="skill-name">HTML5</h3>
+                  <p class="skill-role">Structure &amp; Semantics</p>
+                </div>
+              </div>
+            </div>
+            <p class="pillar-text">
+              Writing clean, accessible, and SEO-friendly document architectures using semantic tags, forms, and structured media elements.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Semantic Markup</span>
+              <span class="tag">Forms &amp; Inputs</span>
+              <span class="tag">Accessibility</span>
+            </div>
+          </article>
+
+          <!-- CSS -->
+          <article class="card skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-identity">
+                <span class="lang-badge lang-css">CSS</span>
+                <div>
+                  <h3 class="skill-name">CSS3</h3>
+                  <p class="skill-role">Styling &amp; Responsive Layout</p>
+                </div>
+              </div>
+            </div>
+            <p class="pillar-text">
+              Designing modern interfaces with CSS Grid, Flexbox, custom properties, smooth transitions, and mobile-first responsive breakpoints.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Flexbox &amp; Grid</span>
+              <span class="tag">Responsive Design</span>
+              <span class="tag">Animations</span>
+            </div>
+          </article>
+
+          <!-- JavaScript -->
+          <article class="card skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-identity">
+                <span class="lang-badge lang-js">JS</span>
+                <div>
+                  <h3 class="skill-name">JavaScript</h3>
+                  <p class="skill-role">Interactivity &amp; Logic</p>
+                </div>
+              </div>
+            </div>
+            <p class="pillar-text">
+              Building interactive web features, dynamic UI filtering, event-driven components, and clean client-side functionality.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">ES6+</span>
+              <span class="tag">DOM Manipulation</span>
+              <span class="tag">Interactive UI</span>
+            </div>
+          </article>
+
+          <!-- Python -->
+          <article class="card skill-card" data-category="backend">
+            <div class="skill-top">
+              <div class="skill-identity">
+                <span class="lang-badge lang-py">PY</span>
+                <div>
+                  <h3 class="skill-name">Python</h3>
+                  <p class="skill-role">Backend &amp; Automation</p>
+                </div>
+              </div>
+            </div>
+            <p class="pillar-text">
+              Developing clean algorithmic solutions, automation scripts, and server-side web foundations with readable, modular Python code.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Scripting</span>
+              <span class="tag">Web Foundations</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">03 / Selected Work</p>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-desc">
+            A showcase structure for my web builds—easily customizable with live links and repositories as new projects launch.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="card project-card">
+            <div>
+              <div class="project-banner banner-1">Responsive Business Website</div>
+              <h3 class="project-title">Modern Service Landing Page</h3>
+              <p class="project-desc">
+                Clean multi-section landing page built with semantic HTML, custom CSS Grid layouts, and mobile navigation.
+              </p>
+            </div>
+            <div>
+              <div class="skill-tags" style="margin-bottom: 0.85rem;">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="project-footer">
+                <button type="button" class="details-link" data-project="0">View Project Details &rarr;</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-banner banner-2">Interactive Web Interface</div>
+              <h3 class="project-title">Dynamic Portfolio &amp; UI Kit</h3>
+              <p class="project-desc">
+                Personal developer showcase featuring dark/light theming, interactive skill filters, and direct social integration.
+              </p>
+            </div>
+            <div>
+              <div class="skill-tags" style="margin-bottom: 0.85rem;">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="project-footer">
+                <button type="button" class="details-link" data-project="1">View Project Details &rarr;</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-banner banner-3">Python Web Utility</div>
+              <h3 class="project-title">Data &amp; Logic Workflow App</h3>
+              <p class="project-desc">
+                Structured Python scripting paired with a clean web interface for organizing inputs and automating routine tasks.
+              </p>
+            </div>
+            <div>
+              <div class="skill-tags" style="margin-bottom: 0.85rem;">
+                <span class="tag">Python</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+              </div>
+              <div class="project-footer">
+                <button type="button" class="details-link" data-project="2">View Project Details &rarr;</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT & SOCIALS ==================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">04 / Get In Touch</p>
+          <h2 class="section-title">Connect With Me</h2>
+          <p class="section-desc">
+            Want to collaborate on a website or discuss a project? Reach out directly through my social profiles or prepare a quick message below.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Social Cards -->
+          <div class="social-cards">
+            <div class="card">
+              <div class="social-card-row">
+                <div class="social-info">
+                  <div class="social-icon-box fb-bg">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="pillar-title" style="margin-bottom: 0.15rem;">Facebook</h3>
+                    <p class="pillar-text" style="font-size: 0.84rem;">Direct messages &amp; updates</p>
+                  </div>
+                </div>
+                <div class="social-actions">
+                  <button type="button" class="small-btn copy-url-btn" data-url="https://www.facebook.com/share/19wPdrzb78/" data-label="Facebook">Copy Link</button>
+                  <a href="https://www.facebook.com/share/19wPdrzb78/" target="_blank" rel="noopener noreferrer" class="small-btn primary">Open Profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="social-card-row">
+                <div class="social-info">
+                  <div class="social-icon-box ig-bg">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="pillar-title" style="margin-bottom: 0.15rem;">Instagram</h3>
+                    <p class="pillar-text" style="font-size: 0.84rem;">@maryamhaythim</p>
+                  </div>
+                </div>
+                <div class="social-actions">
+                  <button type="button" class="small-btn copy-url-btn" data-url="https://www.instagram.com/maryamhaythim/?__pwa=1#" data-label="Instagram">Copy Link</button>
+                  <a href="https://www.instagram.com/maryamhaythim/?__pwa=1#" target="_blank" rel="noopener noreferrer" class="small-btn primary">Open Profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Message Helper -->
+          <div class="card">
+            <h3 class="pillar-title" style="margin-bottom: 0.35rem;">Quick Inquiry Builder</h3>
+            <p class="pillar-text" style="margin-bottom: 1rem;">
+              Write your project note below to copy it instantly before messaging me on Facebook or Instagram.
+            </p>
+            <form class="contact-form" id="inquiryForm">
+              <div class="field-group">
+                <label for="senderName">Your Name</label>
+                <input type="text" id="senderName" placeholder="Enter your name" required />
+              </div>
+              <div class="field-group">
+                <label for="projectTopic">Project Idea</label>
+                <textarea id="projectTopic" rows="3" placeholder="Tell me about the website you want to build..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width: 100%;">
+                Copy Message &amp; Prepare to Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 <strong>Maryam Saif</strong>. Web Developer &mdash; HTML, CSS, JavaScript &amp; Python.</p>
+      <div style="display: flex; gap: 1.25rem;">
+        <a href="https://www.facebook.com/share/19wPdrzb78/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/maryamhaythim/?__pwa=1#" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="#top">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== PROJECT DETAILS MODAL ==================== -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem; margin-bottom: 0.85rem;">
+        <h3 id="modalTitle" class="pillar-title" style="font-size: 1.25rem; margin: 0;">Project Title</h3>
+        <button type="button" id="closeModalBtn" class="icon-btn" style="width: 2rem; height: 2rem;" aria-label="Close modal">&times;</button>
+      </div>
+      <p id="modalDesc" class="pillar-text" style="margin-bottom: 1rem;"></p>
+      <div id="modalTags" class="skill-tags" style="margin-bottom: 1.25rem;"></div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.65rem;">
+        <button type="button" id="modalDoneBtn" class="btn-primary" style="padding: 0.55rem 1.1rem; font-size: 0.88rem;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    (function () {
+      // 1. Safe Clipboard Helper (works in VS Code browsers & sandboxed iframes)
+      function copyTextToClipboard(text, successMsg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showToast(successMsg);
+          }).catch(function () {
+            fallbackCopy(text, successMsg);
+          });
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast(successMsg);
+        } catch (err) {
+          showToast('Unable to copy automatically.');
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // 2. Toast Notification
+      var toastEl = document.getElementById('toast');
+      var toastTimer = null;
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastEl.classList.remove('show');
+        }, 2800);
+      }
+
+      // 3. Dark / Light Theme Toggle
+      var htmlEl = document.documentElement;
+      var themeToggle = document.getElementById('themeToggle');
+      try {
+        var savedTheme = localStorage.getItem('ms_portfolio_theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          htmlEl.setAttribute('data-theme', savedTheme);
+        }
+      } catch (e) {}
+
+      themeToggle.addEventListener('click', function () {
+        var current = htmlEl.getAttribute('data-theme') || 'dark';
+        var next = current === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', next);
+        try {
+          localStorage.setItem('ms_portfolio_theme', next);
+        } catch (e) {}
+        showToast('Switched to ' + next + ' mode');
+      });
+
+      // 4. Mobile Menu Toggle
+      var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      var navLinks = document.getElementById('navLinks');
+      mobileMenuBtn.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      // 5. Copy Hero Code Snippet
+      var copyCodeBtn = document.getElementById('copyCodeBtn');
+      copyCodeBtn.addEventListener('click', function () {
+        var codeText = document.getElementById('profileSnippet').innerText;
+        copyTextToClipboard(codeText, 'Profile snippet copied to clipboard!');
+      });
+
+      // 6. Skill Category Filter
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var skillCards = document.querySelectorAll('.skill-card');
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var filter = btn.getAttribute('data-filter');
+          skillCards.forEach(function (card) {
+            var category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // 7. Project Details Modal
+      var projectData = [
+        {
+          title: 'Modern Service Landing Page',
+          desc: 'A responsive multi-section business website built with clean HTML5 structure, CSS Grid/Flexbox styling, and mobile-first navigation. Ready to link to your live GitHub or Netlify deployment.',
+          tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Layout']
+        },
+        {
+          title: 'Dynamic Portfolio & UI Kit',
+          desc: 'An interactive personal developer portfolio featuring dark/light mode switching, live language filtering, and direct social connection links.',
+          tags: ['HTML', 'CSS', 'JavaScript', 'UI/UX']
+        },
+        {
+          title: 'Python Web Utility',
+          desc: 'Clean Python logic and automation workflows paired with a structured front-end interface for organizing tasks and web data.',
+          tags: ['Python', 'HTML', 'CSS', 'Automation']
+        }
+      ];
+
+      var projectModal = document.getElementById('projectModal');
+      var modalTitle = document.getElementById('modalTitle');
+      var modalDesc = document.getElementById('modalDesc');
+      var modalTags = document.getElementById('modalTags');
+
+      document.querySelectorAll('.details-link').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var idx = parseInt(btn.getAttribute('data-project'), 10);
+          var item = projectData[idx];
+          if (!item) return;
+          modalTitle.textContent = item.title;
+          modalDesc.textContent = item.desc;
+          modalTags.innerHTML = item.tags.map(function (t) {
+            return '<span class="tag">' + t + '</span>';
+          }).join('');
+          projectModal.classList.add('open');
+        });
+      });
+
+      function closeModal() {
+        projectModal.classList.remove('open');
+      }
+
+      document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+      document.getElementById('modalDoneBtn').addEventListener('click', closeModal);
+      projectModal.addEventListener('click', function (e) {
+        if (e.target === projectModal) closeModal();
+      });
+
+      // 8. Copy Social Links
+      document.querySelectorAll('.copy-url-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var url = btn.getAttribute('data-url');
+          var label = btn.getAttribute('data-label');
+          copyTextToClipboard(url, label + ' link copied!');
+        });
+      });
+
+      // 9. Quick Inquiry Builder
+      var inquiryForm = document.getElementById('inquiryForm');
+      inquiryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('senderName').value.trim();
+        var topic = document.getElementById('projectTopic').value.trim();
+        if (!name || !topic) return;
+        var formatted = 'Hi Maryam! My name is ' + name + '. I would like to work with you on: ' + topic;
+        copyTextToClipboard(formatted, 'Message copied! Paste it in Facebook or Instagram chat.');
+        inquiryForm.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
